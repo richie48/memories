@@ -1,15 +1,26 @@
-import React from 'react';
+import React,{useEffect} from 'react';
+
 //I didnt know it is important that you import an image in react before using it.
 import memoryimg from './images/memory.png';
 
 import Form from './component/Form/Form.js';
 import Posts from './component/Posts/Posts.js';
 
+import {useDispatch} from 'react-redux';
+
+import getPosts from './reducers/posts'
+
 //installed tailwind > https://www.ordinarycoders.com/blog/article/reactjs-tailwindcss
 
 // import
 
 const App = () => {
+  const  dispatch= useDispatch()
+
+  useEffect(() => {
+    dispatch(getPosts())
+  }, [dispatch])
+
   return (
     <div class="container mx-auto max-w-lg">
       <div class="bg-black p-3 px-10 rounded-sm item-center">
