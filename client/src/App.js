@@ -8,7 +8,7 @@ import Posts from './component/Posts/Posts.js';
 
 import {useDispatch} from 'react-redux';
 
-import getPosts from './reducers/posts'
+import {getPosts} from './actions/post'
 
 //installed tailwind > https://www.ordinarycoders.com/blog/article/reactjs-tailwindcss
 
