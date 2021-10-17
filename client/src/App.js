@@ -20,9 +20,9 @@ const App = () => {
   useEffect(() => {
     dispatch(getPosts())
   }, [dispatch])
-
+  //If you want something to span the whole width use w-screen 
   return (
-    <div className="container mx-auto max-w-xl">
+    <div className="container mx-auto w-screen">
       <div className="bg-black p-3 px-10 rounded-sm item-center">
         <ul className="flex justify-between">
           <li className="mr-2">
@@ -39,7 +39,7 @@ const App = () => {
           </li>
         </ul>
       </div>
-      <div className="grid grid-cols-2 bg-yellow-100">
+      <div className="grid grid-cols-2 bg-blue-100">
         <div>
           <Posts />
         </div>
