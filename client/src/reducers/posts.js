@@ -1,15 +1,15 @@
 
 //we can decide to rename the state to posts since i am in a post reducer
-  const reducer =(state=[],action)=>{
+  const reducer =(posts=[],action)=>{
     switch(action.type){
         case 'CREATE':
-            return action.payload;
+            return [...posts,action.payload];
 
         case 'FETCH ALL':
-            return state;
+            return action.payload;
         
         default:
-            return state
+            return posts
     }
    
 }

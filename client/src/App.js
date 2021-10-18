@@ -39,11 +39,11 @@ const App = () => {
           </li>
         </ul>
       </div>
-      <div className="grid grid-cols-2 bg-blue-100">
-        <div>
+      <div className="flex bg-blue-50">
+        <div className="flex-1">
           <Posts />
         </div>
-        <div>
+        <div className="flex-1">
           <Form />
         </div>
       </div>

@@ -6,7 +6,7 @@ export const getPosts = async (req, res) => {
     //because finding something in a database take time, we need it as an asynchonous action, so we add await
     const postMessages = await PostMessage.find();
 
-    res.status(200).json(postMessages);
+    res.status(200).json({data:postMessages});
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
@@ -16,10 +16,10 @@ export const createPost = async (req, res) => {
   const body = req.body;
 
   //we are using the request received to create a new model named newPost.
-  const newPost = new postMessage(post);
+  const newPost = new PostMessage(body)//postMessage.create(post);
   try {
     await newPost.save();
-    res.status(201).json(newPost);
+    res.status(201).json({success:True,data:newPost});
   } catch (error) {
     res.status(409).json({ message: error.message });
   }
