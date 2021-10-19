@@ -1,7 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import nodemon from 'nodemon';
 import mongoose from 'mongoose';
 
 // had error 'ERR_MODULE_NOT_FOUND'>Have to add .js when importing files

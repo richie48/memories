@@ -9,14 +9,17 @@ import FileBase from 'react-file-base64'
 const Form = () => {
   const dispatch=useDispatch();
   const [postData,setPostData]=useState({
-    creator:'', title:'', message:'',tags:'',selecetedFile:''
+    creator:'', title:'', message:'',tags:'',selectedFile:''
   })
   const handleSubmit = (e)=>{
     e.preventDefault();//To prevent server refresh
     dispatch(createPost(postData));
   }
 
-  const clearSubmit = ()=>{}//here we clear the state
+  const clearSubmit = (e)=>{
+    e.preventDefault();
+    setPostData({ creator:'', title:'', message:'',tags:'',selectedFile:''})
+  }//here we clear the state
 
   //value and onChange are two of the most important properties of the form
   //w-full fixed my issues of my form input areas not being wide enough
@@ -49,7 +52,7 @@ const Form = () => {
         <div className="my-2 w-full">
         <label className="block text-grey-600 text-sm ">Tags
         </label>
-        <input className="text-grey-600 px-2 shadow bg-white w-full text-sm" for="tags" type="text" placeholder="tags"value={postData.tags} onChange={(e)=>setPostData({...postData,tags:e.target.value,
+        <input className="text-grey-600 px-2 shadow bg-white w-full text-sm" type="text" placeholder="tags"value={postData.tags} onChange={(e)=>setPostData({...postData,tags:e.target.value,
         })}></input>
         </div>
         <div>
