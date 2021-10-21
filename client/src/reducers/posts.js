@@ -5,7 +5,7 @@
         case 'CREATE':
             return [...posts,action.payload];
 
-        case 'FETCH ALL':
+        case 'FETCH_ALL':
             return action.payload;
         
         default:

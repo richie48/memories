@@ -2,9 +2,9 @@ import React from 'react';
 
 const Post = () => {
   return (
-    <>
-      <h1>Post</h1>
-    </>
+    <div className="m-2 bg-green-500">
+      Post
+    </div>
   );
 };
 
