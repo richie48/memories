@@ -13,7 +13,6 @@ const Form = () => {
   })
   const handleSubmit = (e)=>{
     e.preventDefault();//To prevent server refresh
-    console.log(postData)
     dispatch(createPost(postData));
 
   }

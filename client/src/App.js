@@ -20,6 +20,7 @@ const App = () => {
   useEffect(() => {
     dispatch(getPosts())
   }, [dispatch])
+
   //If you want something to span the whole width use w-screen 
   return (
     <div className="container mx-auto w-screen">
