@@ -26,7 +26,7 @@ const Form = () => {
   //w-full fixed my issues of my form input areas not being wide enough
   //setting e.g max-w-sm can determine how wide w-full goes
   return (
-    <div className="m-3 p-3 bg-red-100 w-2/3 rounded-md shadow">
+    <div className="m-3 p-3 bg-red-100 lg:w-3/4 rounded-md shadow">
       <form className="" autoComplete="off" onSubmit={handleSubmit}>
         <h6 className="font-bold text-center">Create a memory</h6>
         <div className="my-2"> 
