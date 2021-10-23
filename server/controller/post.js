@@ -6,7 +6,7 @@ export const getPosts = async (req, res) => {
     //because finding something in a database take time, we need it as an asynchonous action, so we add await
     const postMessages = await PostMessage.find();
 
-    res.status(200).json({success: true, data:postMessages});
+    res.status(200).json({success:true,data:postMessages});
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
