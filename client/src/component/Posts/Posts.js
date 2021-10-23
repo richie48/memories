@@ -4,8 +4,10 @@ import { useSelector } from 'react-redux';
 
 const Posts = () => {
   //UseSelector gives you access to all the states in your redux store
-  const posts = useSelector((state)=>state.posts);
-  console.log(!posts)
+  let posts = useSelector((state)=>state.posts);
+
+  posts=[...posts]// based on what is in the console it seems the state grabbed by selector is empty.
+  console.log(posts)
 
   //Using props to access elements of each post
   return (
