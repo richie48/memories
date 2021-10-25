@@ -45,3 +45,25 @@ export const deletePost= async (req,res)=>{
   }
 
 }
+
+
+export const updatePost = async =>{
+  //controller for updating post
+  const body= req.body
+  const found_id = req.params.id
+  if (!body){
+    res.status(401).json({error:"updated information empty"})
+  }
+  const found_user= await PostMessage.findOne({_id:found_id})
+  if (!found_user){
+    res.status(404).json({error:"not found"})
+  }
+
+  try {
+    //how we know that the body is not empty and have found the user  with the id
+    
+  } catch (error) {
+    
+  }
+
+}
