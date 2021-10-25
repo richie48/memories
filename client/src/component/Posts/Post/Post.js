@@ -1,6 +1,7 @@
 import React from 'react';
 
 //passed in the the state as props
+//Inline block takes the width necessary for the tags made
 const Post = ({post,key}) => {
   return (
     <div className="m-1 p-2 max-w-sm rounded bg-blue-50 shadow-lg min-h-md">

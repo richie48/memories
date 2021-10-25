@@ -25,3 +25,23 @@ export const createPost = async (req, res) => {
     res.status(409).json({ message: error.message });
   }
 };
+
+
+export const deletePost= async (req,res)=>{
+  const found_id=req.params.id
+  
+  const found_user= await PostMessage.findOne({_id:found_id})
+  if (!found_user){
+    res.status(404).json({error:"not found"})
+  }
+
+  try {
+    //Provided the user was found
+    await PostMessage.deleteOne({_id:found_id})
+    res.status(201).json({success:true,data:[]})
+    
+  } catch (error) {
+    res.status(401).json({error:error.message})
+  }
+
+}
