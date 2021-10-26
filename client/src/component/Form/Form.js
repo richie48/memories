@@ -26,7 +26,7 @@ const Form = () => {
   //w-full fixed my issues of my form input areas not being wide enough
   //setting e.g max-w-sm can determine how wide w-full goes
   return (
-    <div className="m-3 p-3 bg-red-100 lg:w-3/4 sm:w-96 xs:w-96 rounded-md shadow">
+    <div className="m-3 p-3 bg-red-100 lg:w-3/4 sm:w-2/3 xs:w-96 rounded-md shadow">
       <form className="" autoComplete="off" onSubmit={handleSubmit}>
         <h6 className="font-bold text-center">Create a memory</h6>
         <div className="my-2"> 
@@ -56,7 +56,7 @@ const Form = () => {
         <input className="text-grey-600 px-2 shadow bg-white w-full text-sm" type="text" placeholder="tags"value={postData.tags} onChange={(e)=>setPostData({...postData,tags:e.target.value,
         })}></input>
         </div>
-        <div>
+        <div className="overflow-hidden">
           <FileBase type="file" mutiple={false} onDone={({base64})=>setPostData({...postData,selectedFile:base64})}></FileBase>
         </div>
 
