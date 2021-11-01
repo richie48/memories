@@ -1,5 +1,5 @@
-import React,{useState} from 'react';
-import { useDispatch } from 'react-redux';
+import React,{useState,useEffect} from 'react';
+import { useDispatch,useSelector} from 'react-redux';
 
 import { createPost ,updatePost} from '../../actions/post';
 
@@ -8,6 +8,7 @@ import FileBase from 'react-file-base64'
 
 const Form = ({currentId}) => {
   const dispatch=useDispatch();
+  const post = useSelector((state) =>currentId?state.posts.find((p)=> p._id===currentId):null )
   const [postData,setPostData]=useState({
     creator:'', title:'', message:'',tags:'',selectedFile:''
   })
@@ -67,7 +68,7 @@ const Form = ({currentId}) => {
 
         <div className="my-2 grid grid-cols">
         <button className="bg-blue-500 hover:bg-black text-white font-bold py-1 px-10 my-1 rounded focus:shadow-outline" type="button"onClick={handleSubmit}>
-        Submit
+        {currentId ? "Update":"Submit"}
         </button> 
         <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-10  my-1 rounded focus:shadow-outline" type="button"onClick={clearSubmit}>
         Clear
