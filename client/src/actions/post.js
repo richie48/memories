@@ -24,3 +24,14 @@ export const getPosts = () => async (dispatch) =>{
     }
 
   };
+
+  export const updatePost= (id,post)=> async (dispatch)=>{
+      try {
+          const {data}= await axios.put(url/{id},post)
+          const action={type:'UPDATE',payload:data}
+          dispatch(action)
+          
+      } catch (error) {
+          console.log(error.message)
+      }
+  }

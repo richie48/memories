@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 
 //I didnt know it is important that you import an image in react before using it.
 import memoryimg from './images/memory.png';
@@ -15,6 +15,7 @@ import { getPosts } from './actions/post'
 // import
 
 const App = () => {
+  const [currentId,setCurrentId]= useState(null)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -42,10 +43,10 @@ const App = () => {
       </div>
       <div className="flex flex-col-reverse lg:flex-row md:flex-row xl:flex-row bg-blue-50">
         <div className="w-3/4 md:w-2/3 lg:w-2/3 xl:w-2/3">
-          <Posts />
+          <Posts setCurrentId={setCurrentId} />
         </div>
         <div className="w-3/4 md:w-1/3 lg:w-1/3 xl:w-1/3 ">
-          <Form />
+          <Form currentId={currentId} setCurrentId={setCurrentId} />
         </div>
       </div>
     </div>

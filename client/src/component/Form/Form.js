@@ -1,18 +1,23 @@
 import React,{useState} from 'react';
 import { useDispatch } from 'react-redux';
 
-import { createPost } from '../../actions/post';
+import { createPost ,updatePost} from '../../actions/post';
 
 //Does the job of holding files in the form
 import FileBase from 'react-file-base64'
 
-const Form = () => {
+const Form = ({currentId}) => {
   const dispatch=useDispatch();
   const [postData,setPostData]=useState({
     creator:'', title:'', message:'',tags:'',selectedFile:''
   })
   const handleSubmit = (e)=>{
     e.preventDefault();//To prevent server refresh
+
+    if(currentId){
+      dispatch(updatePost(currentId,postData))
+    }
+    
     dispatch(createPost(postData));
 
   }
@@ -28,7 +33,7 @@ const Form = () => {
   return (
     <div className="m-3 p-3 bg-red-100 lg:w-3/4 sm:w-2/3 xs:w-96 rounded-md shadow">
       <form className="" autoComplete="off" onSubmit={handleSubmit}>
-        <h6 className="font-bold text-center">Create a memory</h6>
+        <h6 className="font-bold text-center">{currentId ? "Edit":"Create"} a memory</h6>
         <div className="my-2"> 
         <label className="block text-grey-600 ">Creator
         </label>
