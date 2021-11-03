@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
 // had error 'ERR_MODULE_NOT_FOUND'>Have to add .js when importing files
 import postRoutes from './routes/posts.js';
@@ -12,16 +13,15 @@ app.use(bodyParser.json({ limit: '30mb', extended: 'true' }));
 //I got error 'body-parser deprecated undefined extended:'when i  didnt set extended to true
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: 'true' }));
 app.use(cors());
+dotenv.config()
 
 //This should be in environmental variables
-const CONNECTION_URL =
-  'mongodb+srv://richard:mypassword@cluster0.pdbaf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 5000;
 
 //In this project i am using the then syntax and not async await
 //connect to mongodb cloud
 mongoose
-  .connect(CONNECTION_URL, {
+  .connect(process.env.CONNECTION_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
