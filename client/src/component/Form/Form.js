@@ -6,27 +6,39 @@ import { createPost ,updatePost} from '../../actions/post';
 //Does the job of holding files in the form
 import FileBase from 'react-file-base64'
 
-const Form = ({currentId}) => {
+const Form = ({currentId,setCurrentId}) => {
   const dispatch=useDispatch();
-  const post = useSelector((state) =>currentId?state.posts.find((p)=> p._id===currentId):null )
+  const post = useSelector((state) =>currentId?state.posts.data.find((p)=> p._id===currentId):null )
   const [postData,setPostData]=useState({
     creator:'', title:'', message:'',tags:'',selectedFile:''
   })
-  const handleSubmit = (e)=>{
-    e.preventDefault();//To prevent server refresh
 
+
+  const clearSubmit = (e)=>{
+    setPostData({ creator:'', title:'', message:'',tags:'',selectedFile:''})
+    setCurrentId(null)
+  }//here we clear the state
+
+  
+  useEffect(() => {
+    if (post){
+      setPostData(post)
+    }
+  }, [post])
+  
+  //If theres something to be updated
+  const handleSubmit = (e)=>{
     if(currentId){
       dispatch(updatePost(currentId,postData))
     }
     
     dispatch(createPost(postData));
+    clearSubmit()
 
   }
-
-  const clearSubmit = (e)=>{
-    e.preventDefault();
-    setPostData({ creator:'', title:'', message:'',tags:'',selectedFile:''})
-  }//here we clear the state
+  
+  
+  
 
   //value and onChange are two of the most important properties of the form
   //w-full fixed my issues of my form input areas not being wide enough

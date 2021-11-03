@@ -20,7 +20,7 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getPosts())
-  }, [dispatch])
+  }, [currentId,dispatch])
 
   //If you want something to span the whole width use w-screen 
   return (

@@ -6,7 +6,7 @@ export const getPosts = async (req, res) => {
     //because finding something in a database take time, we need it as an asynchonous action, so we add await
     const postMessages = await PostMessage.find();
 
-    res.status(200).json({success:true,data:postMessages});
+    res.status(200).json(postMessages);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
@@ -19,7 +19,7 @@ export const createPost = async (req, res) => {
   const newPost = new PostMessage(body)//postMessage.create(post);
   try {
     await newPost.save();
-    res.status(201).json({success:true,data:newPost});
+    res.status(201).json(newPost);
   } catch (error) {
     console.log(error.message)
     res.status(409).json({ message: error.message });
@@ -57,7 +57,6 @@ export const updatePost = async (req,res)=>{
       res.status(401).json({error:"updated information empty"})
     }
     const found_user= await PostMessage.findById(found_id)
-    console.log(found_user)
     if (!found_user){
       // res.status(404).json({error:"not found"})
       res.status(404).send("no post with that id")

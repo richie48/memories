@@ -6,6 +6,7 @@ const Posts = ({setCurrentId}) => {
   //UseSelector gives you access to all the states in your redux store
   const posts = useSelector((state)=>state.posts);
   let posts_data=posts.data
+  console.log(posts)
 
   //Using props to access elements of each post
   return (
