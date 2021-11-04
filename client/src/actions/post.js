@@ -6,7 +6,6 @@ const url = 'http://localhost:5000/posts/';
 export const getPosts = () => async (dispatch) =>{
     try {
         const {data} =  await axios.get(url);
-        console.log(data)
         const action={type:'FETCH_ALL', payload:data}
         dispatch(action)
     } catch (error) {
@@ -35,4 +34,15 @@ export const getPosts = () => async (dispatch) =>{
       } catch (error) {
           console.log(error.message)
       }
+  }
+
+  export const deletePost=(id)=> async (dispatch)=>{
+      try {
+          await axios.delete(id)
+          const action={type:'DELETE',payload:id}
+          dispatch(action)
+      } catch (error) {
+          console.log(error)
+      }
+
   }

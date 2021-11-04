@@ -8,7 +8,7 @@ import FileBase from 'react-file-base64'
 
 const Form = ({currentId,setCurrentId}) => {
   const dispatch=useDispatch();
-  const post = useSelector((state) =>currentId?state.posts.data.find((p)=> p._id===currentId):null )
+  const post = useSelector((state) =>currentId?state.posts.find((p)=> p._id===currentId):null )
   const [postData,setPostData]=useState({
     creator:'', title:'', message:'',tags:'',selectedFile:''
   })
